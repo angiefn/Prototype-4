@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody playerRb;
+    private GameObject focalPoint;
     public float speed = 5.0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        focalPoint = GameObject.Find("Focal Point");
     }
 
     // Update is called once per frame
@@ -18,6 +21,6 @@ public class PlayerControl : MonoBehaviour
     {
         float fowardInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.forward * fowardInput * speed);
+        playerRb.AddForce(focalPoint.transform.forward * fowardInput * speed);
     }
 }
